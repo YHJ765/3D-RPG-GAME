@@ -41,7 +41,5 @@ public class SceneFader : MonoBehaviour
         }
 
         Destroy(gameObject);
-
-        Debug.Log("111");
     }
 }
