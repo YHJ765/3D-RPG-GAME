@@ -12,4 +12,19 @@ public class AttackData_SO : ScriptableObject
     public float maxDamage;
     public float criticalMultiplier;
     public float criticalChance;
+
+    public void ApplyWeaponData(AttackData_SO weapon)
+    {
+        attackRange = weapon.attackRange;
+        skillRange = weapon.skillRange;
+        coolDown = weapon.coolDown;
+
+        minDamage += weapon.minDamage;
+        maxDamage += weapon.maxDamage;
+
+        criticalMultiplier = weapon.criticalMultiplier;
+        criticalChance = weapon.criticalChance;
+    }
+
+    //TODO:卸载装备后恢复原攻击数值
 }

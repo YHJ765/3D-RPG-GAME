@@ -402,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1852732644433894519
 Transform:
   m_ObjectHideFlags: 0
@@ -453,7 +453,7 @@ NavMeshAgent:
   m_Acceleration: 80
   avoidancePriority: 50
   m_AngularSpeed: 800
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -518,6 +518,7 @@ MonoBehaviour:
   templateData: {fileID: 11400000, guid: 10955091d074c41f090d64b45bec0af6, type: 2}
   characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: 457966e9d0c7944609e20c5ef5bcc16c, type: 2}
+  weaponSlot: {fileID: 1852732644433894855}
   isCritical: 0
 --- !u!1 &1852732644434313241
 GameObject:
@@ -2443,6 +2444,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b20cb9cb9197fb64a830cea6c0550d0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b20cb9cb9197fb64a830cea6c0550d0e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2513,6 +2518,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: b96201848d117da4ca7dc3ade4bd59de, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b96201848d117da4ca7dc3ade4bd59de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b96201848d117da4ca7dc3ade4bd59de, type: 3}
       propertyPath: m_RootOrder
