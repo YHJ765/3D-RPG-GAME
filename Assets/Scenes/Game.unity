@@ -80428,7 +80428,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryData: {fileID: 11400000, guid: 3a6bfc0dc55b84b6a9cda5ac3ff0adb1, type: 2}
+  actionData: {fileID: 11400000, guid: 6b685d427eda34aefaa3eac5ad55c500, type: 2}
+  equipmentData: {fileID: 11400000, guid: 9bdae3c6a633d4578baeed43c1b22189, type: 2}
   inventoryUI: {fileID: 380111745}
+  actionUI: {fileID: 1194039137}
+  equipmentUI: {fileID: 2081732057}
 --- !u!4 &1188370896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8512706240844613788, guid: 569b5b5d30f9d4feb89522feccf7b2a4,
@@ -94799,6 +94803,7 @@ GameObject:
   - component: {fileID: 2081732054}
   - component: {fileID: 2081732056}
   - component: {fileID: 2081732055}
+  - component: {fileID: 2081732057}
   m_Layer: 0
   m_Name: Character State
   m_TagString: Untagged
@@ -94868,6 +94873,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081732053}
   m_CullTransparentMesh: 1
+--- !u!114 &2081732057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081732053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b913255e95f84326971d42ad26a1bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotHolders:
+  - {fileID: 1463588885}
+  - {fileID: 492359382}
 --- !u!1001 &2082098794
 PrefabInstance:
   m_ObjectHideFlags: 0
