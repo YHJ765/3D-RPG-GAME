@@ -9,6 +9,7 @@ public class CharacterStates : MonoBehaviour
     public CharacterData_SO templateData;
     public CharacterData_SO characterData;
     public AttackData_SO attackData;
+    private AttackData_SO baseAttackData;
 
     [Header("Weapon")]
     public Transform weaponSlot;
@@ -20,6 +21,11 @@ public class CharacterStates : MonoBehaviour
     {
         if(templateData != null)
             characterData = Instantiate(templateData);
+
+        baseAttackData = Instantiate(attackData);
+        Debug.Log("attackData:" + attackData.minDamage);
+        Debug.Log("baseAttackdata:" + baseAttackData.minDamage);
+
     }
 
     #region Read from Data_SO
@@ -91,14 +97,32 @@ public class CharacterStates : MonoBehaviour
     #endregion
 
     #region Equip Weapon
-
+    public void ChangeWeapon(ItemData_SO weapon)
+    {
+        UnEquipWeapon();
+        EquipWeapon(weapon);
+    }
     public void EquipWeapon(ItemData_SO weapon)
     {
         if(weapon.weaponPrefab != null)
             Instantiate(weapon.weaponPrefab, weaponSlot);
 
         //TODO:更新属性
+        //TODO:切换动画
         attackData.ApplyWeaponData(weapon.weaponData);
+    }
+
+    public void UnEquipWeapon()
+    {
+        if(weaponSlot.transform.childCount != 0)
+        {
+            for(int i = 0; i < weaponSlot.transform.childCount; i++)
+            {
+                Destroy(weaponSlot.transform.GetChild(i).gameObject);
+            }
+        }
+        attackData.ApplyWeaponData(baseAttackData);
+        //TODO:切换动画
     }
     #endregion
 }

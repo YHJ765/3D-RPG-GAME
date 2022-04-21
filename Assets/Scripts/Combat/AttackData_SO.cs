@@ -19,12 +19,10 @@ public class AttackData_SO : ScriptableObject
         skillRange = weapon.skillRange;
         coolDown = weapon.coolDown;
 
-        minDamage += weapon.minDamage;
-        maxDamage += weapon.maxDamage;
+        minDamage = weapon.minDamage;
+        maxDamage = weapon.maxDamage;
 
         criticalMultiplier = weapon.criticalMultiplier;
         criticalChance = weapon.criticalChance;
     }
-
-    //TODO:卸载装备后恢复原攻击数值
 }
