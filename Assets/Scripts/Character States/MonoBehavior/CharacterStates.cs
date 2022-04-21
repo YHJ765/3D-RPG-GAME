@@ -23,9 +23,6 @@ public class CharacterStates : MonoBehaviour
             characterData = Instantiate(templateData);
 
         baseAttackData = Instantiate(attackData);
-        Debug.Log("attackData:" + attackData.minDamage);
-        Debug.Log("baseAttackdata:" + baseAttackData.minDamage);
-
     }
 
     #region Read from Data_SO
@@ -123,6 +120,20 @@ public class CharacterStates : MonoBehaviour
         }
         attackData.ApplyWeaponData(baseAttackData);
         //TODO:切换动画
+    }
+    #endregion
+
+    #region Apply Data Change
+    public void ApplyHealth(int amount)
+    {
+        if(CurrentHealth + amount <= MaxHealth)
+        {
+            CurrentHealth += amount;
+        }
+        else
+        {
+            CurrentHealth = MaxHealth;
+        }
     }
     #endregion
 }

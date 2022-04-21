@@ -15,6 +15,9 @@ public class ItemData_SO : ScriptableObject
     public string description = "";
     public bool stackable;
 
+    [Header("Useable Item")]
+    public UseableItemData_SO useableData;
+
     [Header("Weapon")]
     public GameObject weaponPrefab;
     public AttackData_SO weaponData;

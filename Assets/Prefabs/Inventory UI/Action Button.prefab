@@ -301,6 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4557438739752117968}
   - component: {fileID: 5704044448284029776}
+  - component: {fileID: 309459762490496313}
   m_Layer: 0
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -342,3 +343,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1521241246653585771}
   amount: {fileID: 1424704778548560576}
+--- !u!114 &309459762490496313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8998321877787087563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2358e0565f942ae932591da4fbb895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

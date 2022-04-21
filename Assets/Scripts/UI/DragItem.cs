@@ -18,7 +18,7 @@ public class DragItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         InventoryManager.Instance.currentDrag = new InventoryManager.DragData();
-        InventoryManager.Instance.currentDrag.originalHolder = GetComponent<SlotHolder>();
+        InventoryManager.Instance.currentDrag.originalHolder = GetComponentInParent<SlotHolder>();
         InventoryManager.Instance.currentDrag.originalParent = (RectTransform)transform.parent;
         //记录原始数据
         transform.SetParent(InventoryManager.Instance.dragCanvas.transform, true);
