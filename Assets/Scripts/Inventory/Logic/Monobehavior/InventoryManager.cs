@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
@@ -24,6 +25,33 @@ public class InventoryManager : Singleton<InventoryManager>
     [Header("Drag Canvas")]
     public Canvas dragCanvas;
     public DragData currentDrag;
+
+    [Header("UI Panel")]
+    public GameObject bagPanel;
+    public GameObject statesPanel;
+    bool isOpen = false;
+
+    [Header("States Text")]
+    public Text healthText;
+    public Text attackText;
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            isOpen = !isOpen;
+            bagPanel.SetActive(isOpen);
+            statesPanel.SetActive(isOpen);
+        }
+
+        UpdateStatesText(GameManager.Instance.playerStates.MaxHealth, GameManager.Instance.playerStates.attackData.minDamage, GameManager.Instance.playerStates.attackData.maxDamage);
+    }
+
+    public void UpdateStatesText(int health, int min, int max)
+    {
+        healthText.text = health.ToString();
+        attackText.text = min + " - " + max;
+    }
 
     void Start() 
     {
