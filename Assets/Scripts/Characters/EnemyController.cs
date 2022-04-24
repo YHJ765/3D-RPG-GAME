@@ -65,19 +65,22 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         }
 
         //FIXME:场景切换后修改
+        // GameManager.Instance.AddObserver(this);
+    }
+
+    // 切换场景时启用
+    void OnEnable()
+    {
         GameManager.Instance.AddObserver(this);
     }
 
-    //切换场景时启用
-    // void OnEnable()
-    // {
-    //     GameManager.Instance.AddObserver(this);
-    // }
-
-    void Disable()
+    void OnDisable()
     {
         if(!GameManager.IsInitialized) return;
         GameManager.Instance.RemoveObserver(this);
+
+        if(GetComponent<LootSpawner>() && isDead)
+            GetComponent<LootSpawner>().Spawnloot();
     }
 
     private void Update()
