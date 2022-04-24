@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public enum SlotType {BAG, WEAPON, ARMOR, ACTION}
-public class SlotHolder : MonoBehaviour, IPointerClickHandler
+public class SlotHolder : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
 {
     public SlotType slotType;
     public ItemUI itemUI;
@@ -62,4 +62,22 @@ public class SlotHolder : MonoBehaviour, IPointerClickHandler
         itemUI.SetupItemUI(item.itemData, item.amount);
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(itemUI.GetItem())
+        {
+            InventoryManager.Instance.tooltip.SetupTooltip(itemUI.GetItem());
+            InventoryManager.Instance.tooltip.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        InventoryManager.Instance.tooltip.gameObject.SetActive(false);
+    }
+
+    void OnDisable() 
+    {
+        InventoryManager.Instance.tooltip.gameObject.SetActive(false);
+    }
 }

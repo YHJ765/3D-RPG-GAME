@@ -35,6 +35,9 @@ public class InventoryManager : Singleton<InventoryManager>
     public Text healthText;
     public Text attackText;
 
+    [Header("Tooltip")]
+    public ItemTooltip tooltip;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.B))
