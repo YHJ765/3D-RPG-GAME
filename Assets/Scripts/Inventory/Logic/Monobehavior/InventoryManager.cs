@@ -13,8 +13,11 @@ public class InventoryManager : Singleton<InventoryManager>
 
     //TODO:最后添加模版保存
     [Header("Inventory Data")]    
+    public InventoryData_SO inventoryTemplate;
     public InventoryData_SO inventoryData;
+    public InventoryData_SO actionTemplate;
     public InventoryData_SO actionData;
+    public InventoryData_SO equipmentTemplate;
     public InventoryData_SO equipmentData;
 
     [Header("ContainerS")]
@@ -38,6 +41,16 @@ public class InventoryManager : Singleton<InventoryManager>
     [Header("Tooltip")]
     public ItemTooltip tooltip;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        if(inventoryTemplate != null)
+            inventoryData = Instantiate(inventoryTemplate);
+        if(actionTemplate != null)
+            actionData = Instantiate(actionTemplate);
+        if(equipmentTemplate != null)
+            equipmentData = Instantiate(equipmentTemplate);
+    }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.B))
@@ -50,6 +63,20 @@ public class InventoryManager : Singleton<InventoryManager>
         UpdateStatesText(GameManager.Instance.playerStates.MaxHealth, GameManager.Instance.playerStates.attackData.minDamage, GameManager.Instance.playerStates.attackData.maxDamage);
     }
 
+    public void SaveData()
+    {
+        SaveManager.Instance.Save(inventoryData, inventoryData.name);
+        SaveManager.Instance.Save(actionData, actionData.name);
+        SaveManager.Instance.Save(equipmentData, equipmentData.name);
+    }
+
+    public void LoadData()
+    {
+        SaveManager.Instance.Load(inventoryData, inventoryData.name);
+        SaveManager.Instance.Load(actionData, actionData.name);
+        SaveManager.Instance.Load(equipmentData, equipmentData.name);
+    }
+
     public void UpdateStatesText(int health, int min, int max)
     {
         healthText.text = health.ToString();
@@ -58,6 +85,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
     void Start() 
     {
+        LoadData();
         inventoryUI.RefreshUI(); 
         actionUI.RefreshUI();
         equipmentUI.RefreshUI();   

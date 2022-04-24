@@ -42,6 +42,7 @@ public class SceneController : Singleton<SceneController>,IEndGameObserver
     {
         //TODO:保存数据
         SaveManager.Instance.SavePlayerData();
+        InventoryManager.Instance.SaveData();
 
         if(SceneManager.GetActiveScene().name != sceneName)
         {
@@ -104,6 +105,7 @@ public class SceneController : Singleton<SceneController>,IEndGameObserver
 
             //保存数据
             SaveManager.Instance.SavePlayerData();
+            InventoryManager.Instance.SaveData();
             yield return StartCoroutine(fade.FadeIn(2.5f));
             yield break;
         }

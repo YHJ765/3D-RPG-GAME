@@ -64,7 +64,6 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             GetNewWayPoint();
         }
 
-        //FIXME:场景切换后修改
         // GameManager.Instance.AddObserver(this);
     }
 
