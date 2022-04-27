@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbab14ffdd55f446194bdd1c811c2f69, type: 3}
+  m_Name: FF7_Sword
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: "\u7834\u574F\u5251"
+  itemIcon: {fileID: 21300000, guid: fdb5033bf633f478b9e958f9e7103385, type: 3}
+  itemAmount: 1
+  description: "\u4F20\u8BF4\u4E2D\u7684\u5927\u5251\uFF0C\u5177\u6709\u5F88\u5F3A\u7684\u7834\u574F\u529B"
+  stackable: 0
+  useableData: {fileID: 0}
+  weaponPrefab: {fileID: 4549963428309633865, guid: 2108f05e6707441fa93ad8374f69756c,
+    type: 3}
+  weaponData: {fileID: 11400000, guid: f256f19740e5741438285b5d5752650a, type: 2}
+  weaponAnimator: {fileID: 22100000, guid: f329b50de37d14889bace50b72fbddcb, type: 2}
