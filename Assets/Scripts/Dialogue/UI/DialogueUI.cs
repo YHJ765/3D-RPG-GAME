@@ -12,6 +12,10 @@ public class DialogueUI : Singleton<DialogueUI>
     public Button nextButton;
     public GameObject dialoguePanel;
 
+    [Header("Options")]
+    public RectTransform optionPanel;
+    public OptionUI optionPrefab;
+
     [Header("Data")]
     public DialogueData_SO currentData;
     int currentIndex = 0;
@@ -39,7 +43,8 @@ public class DialogueUI : Singleton<DialogueUI>
     public void UpdateMainDialogue(DialoguePiece piece)
     {
         dialoguePanel.SetActive(true);
-
+        currentIndex++;
+        
         if(piece.image != null)
         {
             icon.enabled = true;
@@ -54,12 +59,35 @@ public class DialogueUI : Singleton<DialogueUI>
 
         if(piece.options.Count == 0 && currentData.dialoguePieces.Count > 0)
         {
+            nextButton.interactable = true;
             nextButton.gameObject.SetActive(true);
-            currentIndex++;
+            nextButton.transform.GetChild(0).gameObject.SetActive(true);
         }
         else 
-            nextButton.gameObject.SetActive(false);
+        {
+            // nextButton.gameObject.SetActive(false);
+            nextButton.interactable = false;
+            nextButton.transform.GetChild(0).gameObject.SetActive(false);
+        }
 
+        //创建options
+        CreateOptions(piece);
+    }
 
+    void CreateOptions(DialoguePiece piece)
+    {
+        if(optionPanel.childCount > 0)
+        {
+            for(int i = 0; i < optionPanel.childCount; i++)
+            {
+                Destroy(optionPanel.GetChild(i).gameObject);
+            }
+        }
+
+        for(int i = 0; i < piece.options.Count; i++)
+        {
+            var option = Instantiate(optionPrefab, optionPanel);
+            option.UpdateOption(piece, piece.options[i]);
+        }
     }
 }

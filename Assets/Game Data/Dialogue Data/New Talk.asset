@@ -16,7 +16,13 @@ MonoBehaviour:
   - ID: piece01
     image: {fileID: 0}
     text: "\u4F60\u597D\u5440"
-    options: []
+    options:
+    - text: "\u4F60\u597D\u554A\uFF5E"
+      targetID: 
+      takeQuest: 0
+    - text: "\u6709\u4E8B\u5417\uFF1F"
+      targetID: piece02
+      takeQuest: 0
   - ID: piece02
     image: {fileID: 0}
     text: "\u4ECA\u5929\u5929\u6C14\u771F\u4E0D\u9519"
