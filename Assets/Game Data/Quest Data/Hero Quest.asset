@@ -17,3 +17,7 @@ MonoBehaviour:
   isStarted: 0
   isComplete: 0
   isFinished: 0
+  questRequires: []
+  rewards:
+  - itemData: {fileID: 11400000, guid: 529a62b10bddd4d508b33ece5a9fffd2, type: 2}
+    amount: 1
