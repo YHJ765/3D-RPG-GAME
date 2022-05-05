@@ -17,7 +17,13 @@ MonoBehaviour:
   isStarted: 0
   isComplete: 0
   isFinished: 0
-  questRequires: []
+  questRequires:
+  - name: "\u53F2\u83B1\u59C6"
+    requireAmount: 3
+    currentAmount: 0
+  - name: "\u4E4C\u9F9F"
+    requireAmount: 1
+    currentAmount: 0
   rewards:
   - itemData: {fileID: 11400000, guid: 529a62b10bddd4d508b33ece5a9fffd2, type: 2}
     amount: 1

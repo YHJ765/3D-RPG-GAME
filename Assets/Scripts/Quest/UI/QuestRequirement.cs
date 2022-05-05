@@ -16,8 +16,13 @@ public class QuestRequirement : MonoBehaviour
         requireName = GetComponent<Text>();
         progressNumber = transform.GetChild(1).GetComponent<Text>();
     }
-    void update()
+
+    public void SetupRequirement(string name, int amount, int currentAmount)
     {
-        progressBar.value = 50;
+        requireName.text = name;
+        progressNumber.text = currentAmount.ToString() + " / " + amount.ToString();
+        progressBar.minValue = 0;
+        progressBar.maxValue = amount;
+        progressBar.value = currentAmount;
     }
 }
