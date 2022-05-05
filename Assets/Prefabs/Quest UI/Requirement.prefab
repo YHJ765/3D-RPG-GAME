@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 5316926436107283382}
   - component: {fileID: 5316926436107283380}
   - component: {fileID: 5316926436107283383}
+  - component: {fileID: 5496179196162730540}
   m_Layer: 5
   m_Name: Requirement
   m_TagString: Untagged
@@ -156,6 +157,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u5927\u8611\u83C7"
+--- !u!114 &5496179196162730540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5316926436107283369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4faf73521824649af9782ac88bf44608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 6384839669735963852}
 --- !u!1 &5316926436588942756
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,9 +253,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
