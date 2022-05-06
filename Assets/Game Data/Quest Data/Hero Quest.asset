@@ -18,10 +18,10 @@ MonoBehaviour:
   isComplete: 0
   isFinished: 0
   questRequires:
-  - name: "\u53F2\u83B1\u59C6"
+  - name: Slime
     requireAmount: 3
     currentAmount: 0
-  - name: "\u4E4C\u9F9F"
+  - name: TurtleShell
     requireAmount: 1
     currentAmount: 0
   rewards:

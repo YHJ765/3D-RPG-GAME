@@ -80,6 +80,13 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
         if(GetComponent<LootSpawner>() && isDead)
             GetComponent<LootSpawner>().Spawnloot();
+
+        if(QuestManager.IsInitialized && isDead)
+        {
+            Debug.Log(this.name);
+            //TODO:敌人名称与任务目标名称配对（可以在characterData_SO中新增敌人名称以作辨别）
+            QuestManager.Instance.UpdateQuestProgress(this.name, 1);
+        }
     }
 
     private void Update()

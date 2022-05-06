@@ -16,6 +16,19 @@ public class QuestManager : Singleton<QuestManager>
 
     public List<QuestTask> tasks = new List<QuestTask>();
 
+    //敌人死亡，拾取物品
+    public void UpdateQuestProgress(string requireName, int amount)
+    {
+        foreach(var task in tasks)
+        {
+            var matchTask = task.questData.questRequires.Find(r => r.name == requireName);
+            if(matchTask != null)
+                matchTask.currentAmount += amount;
+
+            task.questData.CheckQuestProgress();
+        }
+    }
+
     public bool HaveQuest(QuestData_SO data)
     {
         if(data != null)        

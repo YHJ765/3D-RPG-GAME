@@ -59478,7 +59478,7 @@ PrefabInstance:
     - target: {fileID: 8516782163582265008, guid: 569b5b5d30f9d4feb89522feccf7b2a4,
         type: 3}
       propertyPath: m_Name
-      value: Slime (1)
+      value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 8516992773625816546, guid: 569b5b5d30f9d4feb89522feccf7b2a4,
         type: 3}
@@ -73694,7 +73694,7 @@ PrefabInstance:
     - target: {fileID: 3179353342387062650, guid: 661824d90829d43218fcef837d1c9731,
         type: 3}
       propertyPath: m_Name
-      value: TurtleShell (2)
+      value: TurtleShell
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 661824d90829d43218fcef837d1c9731, type: 3}
@@ -81716,7 +81716,7 @@ PrefabInstance:
     - target: {fileID: 8516782163582265008, guid: 569b5b5d30f9d4feb89522feccf7b2a4,
         type: 3}
       propertyPath: m_Name
-      value: Slime (2)
+      value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 8516992773625816546, guid: 569b5b5d30f9d4feb89522feccf7b2a4,
         type: 3}
@@ -89489,7 +89489,7 @@ PrefabInstance:
     - target: {fileID: 3179353342387062650, guid: 661824d90829d43218fcef837d1c9731,
         type: 3}
       propertyPath: m_Name
-      value: TurtleShell (1)
+      value: TurtleShell
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 661824d90829d43218fcef837d1c9731, type: 3}

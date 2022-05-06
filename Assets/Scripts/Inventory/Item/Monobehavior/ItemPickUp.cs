@@ -13,6 +13,9 @@ public class ItemPickUp : MonoBehaviour
             InventoryManager.Instance.inventoryUI.RefreshUI();
             //装备武器
             // GameManager.Instance.playerStates.EquipWeapon(itemData);
+
+            //检查是否有任务
+            QuestManager.Instance.UpdateQuestProgress(itemData.itemName, itemData.itemAmount);
             Destroy(gameObject);
         }    
     }
