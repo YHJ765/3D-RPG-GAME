@@ -35,4 +35,16 @@ public class QuestData_SO : ScriptableObject
             Debug.Log("任务完成");
         }
     }
+
+    //当前任务需要 收集/消灭 的目标列表
+    public List<string> RequireTargetName()
+    {
+        List<string> targetNameList = new List<string>();
+
+        foreach(var require in questRequires)
+        {
+            targetNameList.Add(require.name);
+        }
+        return targetNameList;
+    }
 }

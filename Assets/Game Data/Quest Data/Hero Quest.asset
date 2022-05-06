@@ -20,9 +20,12 @@ MonoBehaviour:
   questRequires:
   - name: Slime
     requireAmount: 3
-    currentAmount: 0
+    currentAmount: 1
   - name: TurtleShell
     requireAmount: 1
+    currentAmount: 0
+  - name: "\u5927\u8611\u83C7"
+    requireAmount: 2
     currentAmount: 0
   rewards:
   - itemData: {fileID: 11400000, guid: 529a62b10bddd4d508b33ece5a9fffd2, type: 2}
