@@ -34,6 +34,9 @@ public class QuestUI : Singleton<QuestUI>
             questContentText.text = "";
             //显示面板内容
             SetupQuestList();
+
+            if(!isOpen)
+                tooltip.gameObject.SetActive(false);
         }
     }
 
@@ -74,5 +77,11 @@ public class QuestUI : Singleton<QuestUI>
             var q = Instantiate(requirement, requireTransform);
             q.SetupRequirement(require.name, require.requireAmount, require.currentAmount);
         }
+    }
+
+    public void SetupRewardItem(ItemData_SO itemData, int amount)
+    {
+        var item = Instantiate(rewardUI,rewardTransform);
+        item.SetupItemUI(itemData, amount);
     }
 }

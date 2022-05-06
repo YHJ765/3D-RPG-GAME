@@ -18,6 +18,16 @@ public class QuestNameButton : MonoBehaviour
     {
         questContentText.text = currentData.description;
         QuestUI.Instance.SetupRequireList(currentData);
+
+        foreach(Transform item in QuestUI.Instance.rewardTransform)
+        {
+            Destroy(item.gameObject);
+        }
+
+        foreach(var item in currentData.rewards)
+        {
+            QuestUI.Instance.SetupRewardItem(item.itemData, item.amount);
+        }
     }
 
     public void SetupNameButton(QuestData_SO questData)

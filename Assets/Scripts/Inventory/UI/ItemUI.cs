@@ -8,6 +8,8 @@ public class ItemUI : MonoBehaviour
     public Image icon = null;
     public Text amount = null;
 
+    public ItemData_SO currentItemData;
+
     public InventoryData_SO Bag { get; set; }
     public int Index { get; set; } = -1;
     public void SetupItemUI(ItemData_SO item, int itemAmount)
@@ -21,6 +23,7 @@ public class ItemUI : MonoBehaviour
         
         if(item != null)
         {
+            currentItemData = item;
             icon.sprite = item.itemIcon;
             amount.text = itemAmount.ToString();
             icon.gameObject.SetActive(true);
