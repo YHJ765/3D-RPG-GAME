@@ -15,6 +15,14 @@ public class DialogueController : MonoBehaviour
         }    
     }
 
+    void OnTriggerExit(Collider other) 
+    {
+        if(other.CompareTag("Player"))
+        {
+            DialogueUI.Instance.dialoguePanel.SetActive(false);
+        }    
+    }
+
     void Update()
     {
         if(canTalk && Input.GetMouseButtonDown(1))

@@ -95800,6 +95800,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentData: {fileID: 11400000, guid: e8c67c56c154e4a6c89fdaca7c61fdc3, type: 2}
+--- !u!114 &5150736616846280132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150736616846280130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a507034b5b7dc40259c2d9c90c627dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogue: {fileID: 11400000, guid: e8c67c56c154e4a6c89fdaca7c61fdc3, type: 2}
+  progressDialogue: {fileID: 11400000, guid: 4ac75514d47eb470ab8e49f2bb4fd342, type: 2}
+  completeDialogue: {fileID: 11400000, guid: ccd0ea54761b141589894ea551dc6244, type: 2}
+  finishDialogue: {fileID: 11400000, guid: 9b6e7c6e66db145839c4b3f7597d0ac6, type: 2}
 --- !u!1001 &5855767919427580244
 PrefabInstance:
   m_ObjectHideFlags: 0
