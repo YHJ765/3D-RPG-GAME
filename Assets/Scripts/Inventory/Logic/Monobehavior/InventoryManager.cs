@@ -136,11 +136,9 @@ public class InventoryManager : Singleton<InventoryManager>
         }
         return false;
     }
-
     #endregion
 
     #region 检测任务物品
-
     public void CheckQuestItemInBag(string questItemName)
     {
         foreach(var item in inventoryData.items)
@@ -161,6 +159,16 @@ public class InventoryManager : Singleton<InventoryManager>
             }
         }
     }
-
     #endregion
+
+    //检测背包和快捷栏上的物品
+    public InventoryItem QuestItemInBag(ItemData_SO questItem)
+    {
+        return inventoryData.items.Find(i => i.itemData = questItem);
+    }
+
+    public InventoryItem QuestItemInAction(ItemData_SO questItem)
+    {
+        return actionData.items.Find(i => i.itemData = questItem);
+    }
 }

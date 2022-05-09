@@ -25,4 +25,15 @@ public class QuestRequirement : MonoBehaviour
         progressBar.maxValue = amount;
         progressBar.value = currentAmount;
     }
+
+    public void SetupRequirement(string name, bool isFinished)
+    {
+        if(isFinished)
+        {
+            requireName.text = name;
+            progressNumber.text = "完成";
+            progressBar.value = progressBar.maxValue;
+        }
+    }
+
 }
