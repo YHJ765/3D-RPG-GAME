@@ -23,6 +23,8 @@ public class SaveManager : Singleton<SaveManager>
         if(Input.GetKeyDown(KeyCode.S))
         {
             SavePlayerData();
+            InventoryManager.Instance.SaveData();
+            QuestManager.Instance.SaveQuestManager();
         }    
 
         if(Input.GetKeyDown(KeyCode.L))

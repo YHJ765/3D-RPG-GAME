@@ -16,11 +16,39 @@ public class QuestManager : Singleton<QuestManager>
 
     public List<QuestTask> tasks = new List<QuestTask>();
 
+    void Start() 
+    {
+        LoadQuestManager();    
+    }
+
+    public void LoadQuestManager()
+    {
+        var questCount = PlayerPrefs.GetInt("QuestCount");
+
+        for(int i = 0; i < questCount; i++)
+        {
+            var newQuest = ScriptableObject.CreateInstance<QuestData_SO>();
+            SaveManager.Instance.Load(newQuest, "task" + i);
+            tasks.Add(new QuestTask { questData = newQuest } );
+        }
+    }
+
+    public void SaveQuestManager()
+    {
+        PlayerPrefs.SetInt("QuestCount", tasks.Count);
+        for(int i = 0; i < tasks.Count; i++)
+        {
+            SaveManager.Instance.Save(tasks[i].questData, "task" + i);
+        }
+    }
+
     //敌人死亡，拾取物品
     public void UpdateQuestProgress(string requireName, int amount)
     {
         foreach(var task in tasks)
         {
+            if(task.IsComplete)
+                continue;
             var matchTask = task.questData.questRequires.Find(r => r.name == requireName);
             if(matchTask != null)
                 matchTask.currentAmount += amount;

@@ -43,6 +43,7 @@ public class SceneController : Singleton<SceneController>,IEndGameObserver
         //TODO:保存数据
         SaveManager.Instance.SavePlayerData();
         InventoryManager.Instance.SaveData();
+        QuestManager.Instance.SaveQuestManager();
 
         if(SceneManager.GetActiveScene().name != sceneName)
         {
