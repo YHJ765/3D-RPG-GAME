@@ -15,9 +15,7 @@ MonoBehaviour:
   dialoguePieces:
   - ID: piece01
     image: {fileID: 0}
-    text: "\u4F60\u90FD\u6536\u96C6\u5B8C\u4E86\uFF01\u771F\u662F\u592A\u611F\u8C22\u4F60\u4E86\uFF0C\u6765\uFF0C\u8FD9\u91CC\u662F\u7ED9\u4F60\u7684\u5956\u52B1"
+    text: "\u4F60\u5DF2\u7ECF\u6536\u96C6\u5B8C\u4E86\u5417\uFF1F\u592A\u8C22\u8C22\u4F60\u4E86\uFF0C\u8FD9\u662F\u7ED9\u4F60\u7684\u5956\u52B1"
     quest: {fileID: 11400000, guid: a58e5dc8f5f754b088a2d0dfb3eb5104, type: 2}
-    options:
-    - text: "\u8C22\u8C22\u4F60\uFF01"
-      targetID: 
-      takeQuest: 1
+    canExpand: 1
+    options: []

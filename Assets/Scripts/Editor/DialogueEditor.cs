@@ -24,6 +24,8 @@ public class DialogueEditor : EditorWindow
 
     ReorderableList piecesList = null;
 
+    Dictionary<string, ReorderableList> optionListDict = new Dictionary<string, ReorderableList>();
+
     [MenuItem("New Tools/Dialogue Editor")]
     
     public static void Init()
@@ -69,6 +71,11 @@ public class DialogueEditor : EditorWindow
         }
     }
 
+    void OnDisable()
+    {
+        optionListDict.Clear();
+    }
+
     private void SetupReorderableList()
     {
         piecesList = new ReorderableList(currentData.dialoguePieces, typeof(DialoguePiece), true, true, true, true);
@@ -87,13 +94,27 @@ public class DialogueEditor : EditorWindow
     {
         var height = EditorGUIUtility.singleLineHeight;
 
-        height += EditorGUIUtility.singleLineHeight * 9;
+        var isExpand = piece.canExpand;
+
+        if(isExpand)
+        {
+            height += EditorGUIUtility.singleLineHeight * 9;
+
+            var options = piece.options;
+
+            if(options.Count > 1)
+            {
+                height += EditorGUIUtility.singleLineHeight * options.Count;
+            }
+        }
 
         return height;
     }
 
     private void OnDrawPieceListElement(Rect rect, int index, bool isActive, bool isFocused)
     {
+        GUIStyle textStyle = new GUIStyle("TextField");
+
         if(index < currentData.dialoguePieces.Count)
         {
             var currentPiece = currentData.dialoguePieces[index];
@@ -102,30 +123,89 @@ public class DialogueEditor : EditorWindow
 
             tempRect.height = EditorGUIUtility.singleLineHeight;
 
-            tempRect.width = 30;
-            EditorGUI.LabelField(tempRect, "ID");
+            //收缩隐藏
+            currentPiece.canExpand = EditorGUI.Foldout(tempRect, currentPiece.canExpand, currentPiece.ID);
+            if(currentPiece.canExpand)
+            {
+                tempRect.width = 30;
+                tempRect.y += tempRect.height;
+                EditorGUI.LabelField(tempRect, "ID");
 
-            tempRect.x += tempRect.width;
-            tempRect.width = 100;
-            currentPiece.ID = EditorGUI.TextField(tempRect, currentPiece.ID);
+                tempRect.x += tempRect.width;
+                tempRect.width = 100;
+                currentPiece.ID = EditorGUI.TextField(tempRect, currentPiece.ID);
 
-            tempRect.x += tempRect.width + 10;
-            EditorGUI.LabelField(tempRect, "Quest");
+                tempRect.x += tempRect.width + 10;
+                EditorGUI.LabelField(tempRect, "Quest");
 
-            tempRect.x += 45;
-            currentPiece.quest = (QuestData_SO)EditorGUI.ObjectField(tempRect, currentPiece.quest, typeof(QuestData_SO), false);
+                tempRect.x += 45;
+                currentPiece.quest = (QuestData_SO)EditorGUI.ObjectField(tempRect, currentPiece.quest, typeof(QuestData_SO), false);
 
-            tempRect.y += EditorGUIUtility.singleLineHeight + 5;
-            tempRect.x = rect.x;
-            tempRect.height = 60;
-            tempRect.width = tempRect.height;
-            currentPiece.image = (Sprite)EditorGUI.ObjectField(tempRect, currentPiece.image, typeof(Sprite), false);
+                tempRect.y += EditorGUIUtility.singleLineHeight + 5;
+                tempRect.x = rect.x;
+                tempRect.height = 60;
+                tempRect.width = tempRect.height;
+                currentPiece.image = (Sprite)EditorGUI.ObjectField(tempRect, currentPiece.image, typeof(Sprite), false);
 
-            //文本框作业
-            tempRect.x += tempRect.width + 5;
-            tempRect.width = rect.width - tempRect.x;
-            currentPiece.text = (string)EditorGUI.TextField(tempRect, currentPiece.text);
+                //文本框
+                tempRect.x += tempRect.width + 5;
+                tempRect.width = rect.width - tempRect.x;
+                textStyle.wordWrap = true;
+                currentPiece.text = (string)EditorGUI.TextField(tempRect, currentPiece.text, textStyle);
+
+                //画选项
+                tempRect.y += tempRect.height + 5;
+                tempRect.x = rect.x;
+                tempRect.width = rect.width;
+
+                string optionListKey = currentPiece.ID + currentPiece.text;
+
+                if(optionListKey != string.Empty)
+                {
+                    if(!optionListDict.ContainsKey(optionListKey))
+                    {
+                        var optionList = new ReorderableList(currentPiece.options, typeof(DialogueOption), true, true, true, true);
+
+                        optionList.drawHeaderCallback = OnDrawOptionHeader;
+
+                        optionList.drawElementCallback = (optionRect, optionIndex, optionActive, optionFocused) =>
+                        {
+                            OnDrawOptionElement(currentPiece, optionRect, optionIndex, optionActive, optionFocused);
+                        };
+
+                        optionListDict[optionListKey] = optionList;
+                    }
+
+                    optionListDict[optionListKey].DoList(tempRect);
+                }
+            }
         }
+    }
+
+    private void OnDrawOptionHeader(Rect rect)
+    {
+        GUI.Label(rect,  "Option Text");
+        rect.x += rect.width * 0.5f + 10;
+        GUI.Label(rect, "Target ID");
+        rect.x += rect.width * 0.3f;
+        GUI.Label(rect, "Apply");
+    }
+
+    private void OnDrawOptionElement(DialoguePiece currentPiece, Rect optionRect, int optionIndex, bool optionActive, bool optionFocused)
+    {
+        var currentOption = currentPiece.options[optionIndex];
+        var tempRect = optionRect;
+
+        tempRect.width = optionRect.width * 0.5f;
+        currentOption.text = EditorGUI.TextField(tempRect, currentOption.text);
+
+        tempRect.x += tempRect.width + 5;
+        tempRect.width = optionRect.width * 0.3f;
+        currentOption.targetID = EditorGUI.TextField(tempRect, currentOption.targetID);
+
+        tempRect.x += tempRect.width + 5;
+        tempRect.width = optionRect.width * 0.2f;
+        currentOption.takeQuest = EditorGUI.Toggle(tempRect, currentOption.takeQuest);
     }
 
     private void OnDrawPieceHeader(Rect rect)
