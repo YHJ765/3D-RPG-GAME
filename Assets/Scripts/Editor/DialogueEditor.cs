@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEditorInternal;
 using System;
+using System.IO;
 
 [CustomEditor(typeof(DialogueData_SO))]
 public class DialogueCustomEditor : Editor
@@ -23,6 +24,8 @@ public class DialogueEditor : EditorWindow
     DialogueData_SO currentData;
 
     ReorderableList piecesList = null;
+
+    Vector2 scrollPos = Vector2.zero;
 
     Dictionary<string, ReorderableList> optionListDict = new Dictionary<string, ReorderableList>();
 
@@ -53,6 +56,24 @@ public class DialogueEditor : EditorWindow
         return false;
     }
 
+    void OnSelectionChange() 
+    {
+        //选择改变时调用一次
+        var newData = Selection.activeObject as DialogueData_SO;
+
+        if(newData != null)
+        {
+            currentData = newData;
+            SetupReorderableList();
+        }
+        else
+        {
+            currentData = null;
+            piecesList = null;
+        }
+        Repaint();
+    }
+
     void OnGUI()
     {
         if(currentData != null)
@@ -60,13 +81,25 @@ public class DialogueEditor : EditorWindow
             EditorGUILayout.TextField(currentData.name, EditorStyles.boldLabel);
             GUILayout.Space(10);
 
+            scrollPos = GUILayout.BeginScrollView(scrollPos, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
             if(piecesList == null)
                 SetupReorderableList();
 
             piecesList.DoLayoutList();
+            GUILayout.EndScrollView();
         }
         else
         {
+            if(GUILayout.Button("Create New Dialogue"))
+            {
+                string dataPath = "Assets/Game Data/Dialogue Data/";
+                if(!Directory.Exists(dataPath))
+                    Directory.CreateDirectory(dataPath);
+
+                DialogueData_SO newData = ScriptableObject.CreateInstance<DialogueData_SO>();
+                AssetDatabase.CreateAsset(newData, dataPath + "/" + "New Dialogue.asset");
+                currentData = newData;
+            }
             GUILayout.Label("NO DATA SELECTED!", EditorStyles.boldLabel);
         }
     }
@@ -113,6 +146,8 @@ public class DialogueEditor : EditorWindow
 
     private void OnDrawPieceListElement(Rect rect, int index, bool isActive, bool isFocused)
     {
+        EditorUtility.SetDirty(currentData);
+        
         GUIStyle textStyle = new GUIStyle("TextField");
 
         if(index < currentData.dialoguePieces.Count)
