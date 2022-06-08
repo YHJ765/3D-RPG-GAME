@@ -20,7 +20,7 @@ MonoBehaviour:
   questRequires:
   - name: Slime
     requireAmount: 3
-    currentAmount: 1
+    currentAmount: 0
   - name: TurtleShell
     requireAmount: 1
     currentAmount: 0

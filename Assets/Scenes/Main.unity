@@ -14998,7 +14998,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5C0F\u7EA2\u5E3D\u5236\u4F5C Version 1.0"
+  m_Text: "\u5C0F\u7EA2\u5E3D\u5236\u4F5C Version 2.0"
 --- !u!222 &1292288799
 CanvasRenderer:
   m_ObjectHideFlags: 0

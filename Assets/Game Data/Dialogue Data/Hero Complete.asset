@@ -18,4 +18,7 @@ MonoBehaviour:
     text: "\u4F60\u5DF2\u7ECF\u6536\u96C6\u5B8C\u4E86\u5417\uFF1F\u592A\u8C22\u8C22\u4F60\u4E86\uFF0C\u8FD9\u662F\u7ED9\u4F60\u7684\u5956\u52B1"
     quest: {fileID: 11400000, guid: a58e5dc8f5f754b088a2d0dfb3eb5104, type: 2}
     canExpand: 1
-    options: []
+    options:
+    - text: "\u4E0D\u7528\u8C22\uFF0C\u8FD9\u662F\u5E94\u8BE5\u7684\uFF01"
+      targetID: 
+      takeQuest: 1
