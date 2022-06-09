@@ -20,6 +20,7 @@ public class DialogueController : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             DialogueUI.Instance.dialoguePanel.SetActive(false);
+            canTalk = false;
         }    
     }
 

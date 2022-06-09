@@ -16,9 +16,11 @@ public class TransitionPoint : MonoBehaviour
 
     private bool canTrans;
 
+    public bool mainEntrance;
+
     void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.E) && canTrans)
+        if(Input.GetKeyDown(KeyCode.E) && canTrans && !mainEntrance)
         {
             //SceneController 传送
             SceneController.Instance.TransitionToDestination(this);
